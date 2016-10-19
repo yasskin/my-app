@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="birthday-input">
+
+    <template>
+
+        <style include="shared-styles"></style>
+
+        <div class="label"> Birthday!@#$% </div>
+
+        <input placeholder="mm" maxlength="2" id="month">
+        <span></span>
+        <input placeholder="dd" maxlength="2" id="day">
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'birthday-input',
+
+            properties: {
+              birthday: {
+                  type: String,
+                  notify: true
+              }
+            },
+
+            listeners: {
+                'input': '_onInput'
+            },
+
+            _onInput: function() {
+                this.birthday = this.$.month.value.trim() + '/' + this.$.day.value.trim();
+            }
+
+        });
+
+    </script>
+
+</dom-module>
